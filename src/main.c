@@ -23,10 +23,17 @@
 
 #define RDLINE_MAX 1024
 
-const char *response =
-    "HTTP/1.1 200 OK\n"
-    "Content-Type: text/html\n"
-    "Connection: close\n";
+const char *response = "HTTP/1.1 200 OK\n"
+                       "Content-Type: text/html\n"
+                       "Connection: close\n\n"
+                       "<!DOCTYPE HTML>\n"
+                       "<HTML>\n"
+                       "<BODY>\n"
+                       "<b> Hello world! </b>\n"
+                       "</BODY>\n"
+                       "</HTML>";
+
+// const char *html =
 
 int main(int argc, char *argv[])
 {
@@ -132,7 +139,12 @@ int main(int argc, char *argv[])
                             break;
                         };
 
-                        // can send more data, e.g., HTML, here
+                        /*
+                        if (send(r_conn_fd, html, strlen(html), 0) == -1)
+                        {
+                            perror("Failed to send HTML response");
+                            break;
+                        };*/
 
                         break;
                     }
